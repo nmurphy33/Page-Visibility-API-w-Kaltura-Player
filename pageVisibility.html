@@ -1,0 +1,58 @@
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.0.0.js" crossorigin="anonymous"></script> 
+    <script type="application/javascript">
+        
+    //based on page visibility API https://www.w3.org/TR/page-visibility/ 
+    //Code sourced and modified from example here: http://www.html5rocks.com/en/tutorials/pagevisibility/intro/
+    
+function getHiddenProp(){
+    var prefixes = ['webkit','moz','ms','o'];
+    
+    // if 'hidden' is natively supported just return it
+    if ('hidden' in document) return 'hidden';
+    
+    // otherwise loop over all the known prefixes until we find one
+    for (var i = 0; i < prefixes.length; i++){
+        if ((prefixes[i] + 'Hidden') in document) 
+            return prefixes[i] + 'Hidden';
+    }
+
+    // otherwise it's not supported
+    return null;
+}
+
+function hiddenPage(){
+    var prop = getHiddenProp();
+    if (!prop) return false;
+    
+    return document[prop];
+}
+
+  var visProp = getHiddenProp();
+if (visProp) {
+  var evtname = visProp.replace(/[H|h]idden/,'') + 'visibilitychange';
+  document.addEventListener(evtname, viewChange);
+}
+
+function viewChange() {
+
+      if (hiddenPage()){
+         var result = "Video Should Pause!";
+      }
+      else{
+         var result = "Video Might Play if Parent Container in View!";
+         //if the tab is visible, we need to now also check if the player is in the viewport
+        //if the parent of the Kaltura player is out of the viewport, we need to initiate doPause
+      }
+    console.log(result + Math.floor(Date.now()))
+    //I am running this with a time stamp because changing tabs fires BOTH events nearly simultaneously
+    //but obscuring the browser or minimizing it handles the events separately - unsure why
+   }
+
+    
+    </script>
+</head>
+<body>
+</body>
+</html>

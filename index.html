@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<p>Simple non-visual plugin</p>
+
+<script src="https://cdnapisec.kaltura.com/p/27017/sp/2701700/embedIframeJs/uiconf_id/29667911/partner_id/27017"></script>
+<div id="kaltura_player_1432217734" style="width: 560px; height: 395px;"></div>
+<script>
+
+    var str1 = "abc";
+    var str2 = "132";
+
+    kWidget.embed({
+        "targetId": "kaltura_player_1432217734",
+        "wid": "_27017",
+        "uiconf_id": 29667911,
+        "flashvars": {
+            "test": { //this defines the plugin name
+                'plugin': true, //turn it on
+                "iframeHTML5Js" : "test.js" // This line points to the actual JS file of the plugin
+            }
+        },
+        "cache_st": 1432217734,
+        "entry_id": "1_1611vudr"
+    });
+</script>
+
+
+</body>
+</html>
